@@ -41,7 +41,10 @@ python-dotenv = "^1.0.1"
 expiringdict = "^1.2.2"
 discord-py = "^2.4.0"
 
-autogpt-libs = {path = "../autogpt_libs"}
+autogpt-libs = { path = "../autogpt_libs" }
+llm-utils_autogpt = { path = "../../../llm_utils/autogpt", develop = true }
+socksio = "^1.0.0"
+
 [tool.poetry.group.dev.dependencies]
 cx-freeze = { git = "https://github.com/ntindle/cx_Freeze.git", rev = "main", develop = true }
 poethepoet = "^0.26.1"
@@ -52,6 +55,12 @@ ruff = "^0.5.2"
 pyright = "^1.1.371"
 isort = "^5.13.2"
 black = "^24.4.2"
+
+
+[[tool.poetry.source]]
+name = "mirrors"
+url = "https://mirror.sjtu.edu.cn/pypi/web/simple/"
+priority = "primary"
 
 [build-system]
 requires = ["poetry-core"]
