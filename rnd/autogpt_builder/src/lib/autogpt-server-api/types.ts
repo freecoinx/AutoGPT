@@ -12,6 +12,8 @@ export type Block = {
   categories: Category[];
   inputSchema: BlockIORootSchema;
   outputSchema: BlockIORootSchema;
+  staticOutput: boolean;
+  uiType: BlockUIType;
 };
 
 export type BlockIORootSchema = {
@@ -34,10 +36,11 @@ type BlockIOSimpleTypeSubSchema =
   | BlockIOBooleanSubSchema
   | BlockIONullSubSchema;
 
-type BlockIOSubSchemaMeta = {
+export type BlockIOSubSchemaMeta = {
   title?: string;
   description?: string;
   placeholder?: string;
+  advanced?: boolean;
 };
 
 export type BlockIOObjectSubSchema = BlockIOSubSchemaMeta & {
@@ -120,7 +123,7 @@ export type Link = {
   is_static: boolean;
 };
 
-export type LinkCreatable = Omit<Link, "id"> & {
+export type LinkCreatable = Omit<Link, "id" | "is_static"> & {
   id?: string;
 };
 
@@ -180,3 +183,10 @@ export type User = {
   id: string;
   email: string;
 };
+
+export enum BlockUIType {
+  STANDARD = "Standard",
+  INPUT = "Input",
+  OUTPUT = "Output",
+  NOTE = "Note",
+}

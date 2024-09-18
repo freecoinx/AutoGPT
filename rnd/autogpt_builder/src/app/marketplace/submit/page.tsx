@@ -3,8 +3,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { useForm, Controller } from "react-hook-form";
-import ReactFlow, { Background, Controls } from "reactflow";
-import "reactflow/dist/style.css";
 import MarketplaceAPI from "@/lib/marketplace-api";
 import AutoGPTServerAPI from "@/lib/autogpt-server-api";
 import { Card } from "@/components/ui/card";
@@ -136,7 +134,7 @@ const SubmitPage: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Submit Your Agent</h1>
+      <h1 className="mb-6 text-3xl font-bold">Submit Your Agent</h1>
       <Card className="p-6">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="space-y-4">
