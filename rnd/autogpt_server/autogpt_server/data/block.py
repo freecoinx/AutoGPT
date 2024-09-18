@@ -226,13 +226,8 @@ class Block(ABC, Generic[BlockSchemaInputType, BlockSchemaOutputType]):
 
 def get_blocks() -> dict[str, Block]:
     from autogpt_server.blocks import AVAILABLE_BLOCKS  # noqa: E402
-    from custom_blocks import CUSTOM_AVAILABLE_BLOCKS  # noqa: E402
 
-    all_blocks = {}
-    all_blocks.update(AVAILABLE_BLOCKS)
-    all_blocks.update(CUSTOM_AVAILABLE_BLOCKS)
-
-    return all_blocks
+    return AVAILABLE_BLOCKS
 
 
 async def initialize_blocks() -> None:
