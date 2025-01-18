@@ -1,6 +1,7 @@
 import importlib
 import os
 import re
+from glob import glob
 from pathlib import Path
 from typing import Type, TypeVar
 
@@ -9,10 +10,14 @@ from backend.data.block import Block
 # Dynamically load all modules under backend.blocks
 AVAILABLE_MODULES = []
 current_dir = Path(__file__).parent
+file_list = [
+    Path(f)
+    for f in list(glob(f"{current_dir.resolve()}/**/*.py", recursive=True))
+]
 modules = [
     str(f.relative_to(current_dir))[:-3].replace(os.path.sep, ".")
-    for f in current_dir.rglob("*.py")
-    if f.is_file() and f.name != "__init__.py"
+    for f in file_list
+    if f.is_file() and Path(f).name != "__init__.py"
 ]
 for module in modules:
     if not re.match("^[a-z_.]+$", module):

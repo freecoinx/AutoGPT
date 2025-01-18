@@ -105,6 +105,8 @@ class LlmModel(str, Enum, metaclass=LlmModelMeta):
     # Ollama models
     OLLAMA_LLAMA3_8B = "llama3"
     OLLAMA_LLAMA3_405B = "llama3.1:405b"
+    OLLAMA_QWEN2_5_7B = "qwen2.5"
+    OLLAMA_QWEN2_5_MATH_7B = "qwen2.5-math"
     # OpenRouter models
     GEMINI_FLASH_1_5_8B = "google/gemini-flash-1.5"
     GEMINI_FLASH_1_5_EXP = "google/gemini-flash-1.5-exp"
@@ -151,6 +153,8 @@ MODEL_METADATA = {
     LlmModel.LLAMA3_1_8B: ModelMetadata("groq", 131072),
     LlmModel.OLLAMA_LLAMA3_8B: ModelMetadata("ollama", 8192),
     LlmModel.OLLAMA_LLAMA3_405B: ModelMetadata("ollama", 8192),
+    LlmModel.OLLAMA_QWEN2_5_7B: ModelMetadata("ollama", 8192),
+    LlmModel.OLLAMA_QWEN2_5_MATH_7B: ModelMetadata("ollama", 8192),
     LlmModel.GEMINI_FLASH_1_5_8B: ModelMetadata("open_router", 8192),
     LlmModel.GEMINI_FLASH_1_5_EXP: ModelMetadata("open_router", 8192),
     LlmModel.GROK_BETA: ModelMetadata("open_router", 8192),
@@ -824,6 +828,9 @@ class AIConversationBlock(Block):
     def run(
         self, input_data: Input, *, credentials: APIKeyCredentials, **kwargs
     ) -> BlockOutput:
+        print(f"Hello333 --- {input_data}")
+        
+        
         response = self.llm_call(
             AIStructuredResponseGeneratorBlock.Input(
                 prompt="",
