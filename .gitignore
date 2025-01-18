@@ -174,4 +174,7 @@ autogpt_platform/backend/settings.py
 /.auth
 /autogpt_platform/frontend/.auth
 
+*.ign.*
+.test-contents
+
 *.bak
